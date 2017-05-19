@@ -2,20 +2,21 @@
 #define _LIST_H_
 
 typedef struct List_* PList;
-typedef void* List_Element;
+typedef struct List_Element_* PList_Element;
+typedef void* PElement;
 
-typedef Result (*CLONE_ELEMENT)(List_Element, List_Element);
-typedef void (*DELETE_ELEMENT)(List_Element);
-typedef BOOL (*COMPARE_ELEMENT)(List_Element, List_Element);
-typedef void (*PRINT_ELEMENT)(List_Element);
+typedef Result (*CLONE_ELEMENT)(PElement, PElement);
+typedef void (*DELETE_ELEMENT)(PElement);
+typedef BOOL (*COMPARE_ELEMENT)(PElement, PElement);
+typedef void (*PRINT_ELEMENT)(PElement);
 
 PList ListCreate(CLONE_ELEMENT,DELET_ELEMENT,COMPARE_ELEMENTS,PRINT_ELEMENT);
 void ListDestroy(PList);
-Result ListAdd(PList, List_Element);
-Result ListRemove(PList, List_Element);
-List_Element ListGetFirst(PList);
-List_Element ListGetNext(PList);
-BOOL ListCompare(List_Element, List_Element);
+Result ListAdd(PList, PElement);
+Result ListRemove(PList, PElement);
+PElement ListGetFirst(PList);
+PElement ListGetNext(PList);
+BOOL ListCompare(PElement, PElement);
 void ListPrint(PList);
 
 #endif
