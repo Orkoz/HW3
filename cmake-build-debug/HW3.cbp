@@ -80,6 +80,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/Or/Desktop/HW3/defs.h">
+			<Option target="HW3"/>
+		</Unit>
 		<Unit filename="C:/Users/Or/Desktop/HW3/list.c">
 			<Option target="HW3"/>
 		</Unit>

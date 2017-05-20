@@ -5,6 +5,7 @@ set(CMAKE_CXX_STANDARD 11)
 
 set(SOURCE_FILES
         main.c
+        defs.h
         list.h
         list.c
         person.h)
