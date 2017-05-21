@@ -92,6 +92,9 @@
 		<Unit filename="C:/Users/Or/Desktop/HW3/main.c">
 			<Option target="HW3"/>
 		</Unit>
+		<Unit filename="C:/Users/Or/Desktop/HW3/person.c">
+			<Option target="HW3"/>
+		</Unit>
 		<Unit filename="C:/Users/Or/Desktop/HW3/person.h">
 			<Option target="HW3"/>
 		</Unit>

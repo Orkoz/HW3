@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/HW3.dir/main.c.obj"
   "CMakeFiles/HW3.dir/list.c.obj"
+  "CMakeFiles/HW3.dir/person.c.obj"
   "HW3.pdb"
   "HW3.exe"
   "HW3.exe.manifest"

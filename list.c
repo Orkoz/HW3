@@ -94,10 +94,15 @@ Result ListAdd(PList list, PElement element){
     if (new_element != NULL)
         clone_flag = list->CloneElementFunc(new_element, element);
 
-    if ((new_list_element != NULL) && (clone_flag = SUCCESS)){
+    if ((new_list_element != NULL) && (clone_flag == SUCCESS)){
         new_list_element->Element = new_element;
         new_list_element->Next_Element=NULL;
-        list->last__list_element->Next_Element=new_list_element;
+        if (list->first_list_element == NULL) {
+            list->first_list_element = new_element;
+            list->last__list_element = new_element;
+        } else {
+            list->last__list_element->Next_Element = new_list_element;
+        }
         return SUCCESS;
     }
 
@@ -246,10 +251,10 @@ void ListPrint(PList list){
         return;
 
     PElement element = ListGetFirst(list);
+    list->PrintElementFunc(element);
     while (element != NULL){
         list->PrintElementFunc(element);
         printf("\n");
         element = ListGetNext(list);
     }
 }
-

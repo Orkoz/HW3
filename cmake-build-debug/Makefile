@@ -176,6 +176,33 @@ main.c.s:
 	$(MAKE) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/main.c.s
 .PHONY : main.c.s
 
+person.obj: person.c.obj
+
+.PHONY : person.obj
+
+# target to build an object file
+person.c.obj:
+	$(MAKE) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/person.c.obj
+.PHONY : person.c.obj
+
+person.i: person.c.i
+
+.PHONY : person.i
+
+# target to preprocess a source file
+person.c.i:
+	$(MAKE) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/person.c.i
+.PHONY : person.c.i
+
+person.s: person.c.s
+
+.PHONY : person.s
+
+# target to generate assembly for a file
+person.c.s:
+	$(MAKE) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/person.c.s
+.PHONY : person.c.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -191,6 +218,9 @@ help:
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... person.obj
+	@echo ... person.i
+	@echo ... person.s
 .PHONY : help
 
 

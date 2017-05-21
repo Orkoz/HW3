@@ -12,3 +12,8 @@ CMakeFiles/HW3.dir/main.c.obj: ../main.c
 CMakeFiles/HW3.dir/main.c.obj: ../person.h
 CMakeFiles/HW3.dir/main.c.obj: ../point.h
 
+CMakeFiles/HW3.dir/person.c.obj: ../defs.h
+CMakeFiles/HW3.dir/person.c.obj: ../list.h
+CMakeFiles/HW3.dir/person.c.obj: ../person.c
+CMakeFiles/HW3.dir/person.c.obj: ../person.h
+
