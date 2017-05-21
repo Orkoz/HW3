@@ -4,10 +4,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-struct Person_ {
+typedef struct Person_ {
     char* name;
     int age,ID;
-};
+}Person,*PPerson;
 
 
 //*************************************************************************
@@ -21,11 +21,18 @@ struct Person_ {
 //*************************************************************************
 
 PPerson PersonCreate(char* name, int age, int ID){
-    PPerson new_person = (PPerson)malloc(sizeof(PPerson));
+
+    PPerson new_person = (PPerson) malloc(sizeof(Person));
     if (new_person == NULL)
         return NULL;
-    
-    new_person->name = name;
+
+    new_person-> name= (char*) malloc(1+strlen(name));
+    if (new_person-> name == NULL){
+        free(new_person);
+        return NULL;
+    }
+
+    strcpy(new_person->name, name);
     new_person->age=age;
     new_person->ID=ID;
     return new_person;
@@ -50,8 +57,13 @@ Result clonePerson(PElement pElem_one, PElement pElem_two){
 
     target_person->ID = source_person->ID;
     target_person->age = source_person->age;
-    strcpy(target_person->name, source_person->ID);
 
+    target_person->name= (char*) malloc(1+strlen(source_person->name));
+    if (target_person->name == NULL)
+        return FAIL;
+
+    strcpy(target_person->name, source_person->name);
+    return SUCCESS;
 }
 
 

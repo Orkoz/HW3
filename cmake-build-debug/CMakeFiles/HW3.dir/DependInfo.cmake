@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_C
   "C:/Users/Or/Desktop/HW3/list.c" "C:/Users/Or/Desktop/HW3/cmake-build-debug/CMakeFiles/HW3.dir/list.c.obj"
   "C:/Users/Or/Desktop/HW3/main.c" "C:/Users/Or/Desktop/HW3/cmake-build-debug/CMakeFiles/HW3.dir/main.c.obj"
+  "C:/Users/Or/Desktop/HW3/person.c" "C:/Users/Or/Desktop/HW3/cmake-build-debug/CMakeFiles/HW3.dir/person.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
