@@ -3,11 +3,11 @@
 
 #include "defs.h"
 
-typedef struct List_* PList;
-typedef struct List_Element_* PList_Element;
-typedef void* PElement;
+typedef struct List_ List, *PList;
+typedef struct List_Element_ List_Element, *PList_Element;
+typedef void *PElement;
 
-typedef Result (*CLONE_ELEMENT)(PElement, PElement);
+typedef PElement (*CLONE_ELEMENT)(PElement);
 typedef void (*DELETE_ELEMENT)(PElement);
 typedef BOOL (*COMPARE_ELEMENTS)(PElement, PElement);
 typedef void (*PRINT_ELEMENT)(PElement);

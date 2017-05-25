@@ -45,30 +45,31 @@ PPerson PersonCreate(char *name, int age, int ID){
 //* Function name: clonePerson
 //* Description: creates a copy of a person ADT
 //* Parameters:
-//*		-  target_person  - a pointer to a person ADT which will be copied to.
 //*		-  source_person  - a pointer to a person ADT which will be copied from.
-//* Return Value: SUCCESS if the action succeeded and FAIL otherwise.
+//* Return Value: Pointer to cloned person adt.
 //*************************************************************************
 
-Result clonePerson(PElement pElem_one, PElement pElem_two){
-    if (pElem_one == NULL || pElem_two == NULL)
-        return FAIL;
+PPerson clonePerson(PElement pElem_two){
+    //if (pElem_one == NULL || pElem_two == NULL)
+    //    return FAIL;
 
-    PPerson target_person = (PPerson)pElem_one;
+    //PPerson target_person = (PPerson)pElem_one;
     PPerson source_person = (PPerson)pElem_two;
+	PPerson cloned_person = PersonCreate(source_person->name, source_person->age, source_person->ID);
+	return cloned_person;
 
-    target_person->ID = source_person->ID;
-    target_person->age = source_person->age;
+    //target_person->ID = source_person->ID;
+    //target_person->age = source_person->age;
 
-    target_person->name= (char*) malloc(1+strlen(source_person->name));
-	if (target_person->name == NULL)
-	{
-		free(target_person->name); // שחרור של השם
-		return FAIL;
-	}
+    //target_person->name= (char*) malloc(1+strlen(source_person->name));
+	//if (target_person->name == NULL)
+	//{
+	//	free(target_person->name); // שחרור של השם
+	//	return FAIL;
+	//}
 
-    strcpy(target_person->name, source_person->name);
-    return SUCCESS;
+    //strcpy(target_person->name, source_person->name);
+    //return SUCCESS;
 }
 
 

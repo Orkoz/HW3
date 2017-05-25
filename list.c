@@ -33,7 +33,7 @@ struct List_Element_{
 
 
 PList ListCreate(CLONE_ELEMENT CloneElement, DELETE_ELEMENT DeleteElement, COMPARE_ELEMENTS CompareElement, PRINT_ELEMENT PrintElement){
-    PList list = (PList)malloc(sizeof(PList));
+    PList list = (PList)malloc(sizeof(List));
 
     if (list != NULL) {
         list->first_list_element = NULL;
@@ -85,25 +85,29 @@ Result ListAdd(PList list, PElement element){
     if (list == NULL || element == NULL)
         return FAIL;
 
-    PList_Element new_list_element = (PList_Element)malloc(sizeof(PList_Element));
-    PElement new_element = (PElement)malloc(sizeof(PElement));
+    PList_Element new_list_element = (PList_Element)malloc(sizeof(List_Element));
+    //PElement new_element = (PElement)malloc(sizeof(PElement));
     Result clone_flag = FAIL;
 
 	////////////////////////////////////////////////// לא בטוח שצריך את זה! ניתן שיהיו שני אנשים זהים
 	// מה בקשר לשאר השאלה?
-    if (isElementExists(list, element) == TRUE)
-        return FAIL;
+    //if (isElementExists(list, element) == TRUE)
+    //    return FAIL;
 	///////////////////////////////////////////////
 
-    if (new_element != NULL)
-        clone_flag = list->CloneElementFunc(new_element, element);
+    //if (new_element != NULL)
+    //    clone_flag = list->CloneElementFunc(new_element, element);
+
+	PElement new_element = list->CloneElementFunc(element);
+	if (new_element != NULL)
+		clone_flag = SUCCESS;
 
     if ((new_list_element != NULL) && (clone_flag == SUCCESS)){
         new_list_element->Element = new_element;
         new_list_element->Next_Element=NULL;
         if (list->first_list_element == NULL) {
-            list->first_list_element = new_element;
-            list->last__list_element = new_element;
+            list->first_list_element = new_list_element;
+            list->last__list_element = new_list_element;
         } else {
             list->last__list_element->Next_Element = new_list_element; ////// אולי צריך להחליף בין האיבר האחרון לזה?
 			list->last__list_element = new_list_element; //// הוספתי את זה בשביל זה
@@ -112,7 +116,7 @@ Result ListAdd(PList list, PElement element){
     }
 
     free(new_list_element);
-    free(new_element);
+    //free(new_element);
     return FAIL;
 }
 
@@ -206,9 +210,11 @@ PElement ListGetNext(PList list){
     if (list == NULL)
         return NULL;
 
+	if (list->Iterator == NULL)
+		return NULL;
     list->Iterator = list->Iterator->Next_Element;
-    if (list->Iterator == NULL)
-        return NULL;
+	if (list->Iterator == NULL)
+		return NULL;
     return list->Iterator->Element;
 
 }
@@ -256,10 +262,10 @@ void ListPrint(PList list){
         return;
 
     PElement element = ListGetFirst(list);
-    //list->PrintElementFunc(element);
+    list->PrintElementFunc(element);
     while (element != NULL){
+		element = ListGetNext(list); ///
         list->PrintElementFunc(element); ///לא צריך להחליף ביניהם
         printf("\n");
-        element = ListGetNext(list); ///
     }
 }
