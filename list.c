@@ -1,4 +1,5 @@
 #include "list.h"
+#include "defs.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -88,8 +89,11 @@ Result ListAdd(PList list, PElement element){
     PElement new_element = (PElement)malloc(sizeof(PElement));
     Result clone_flag = FAIL;
 
+	////////////////////////////////////////////////// לא בטוח שצריך את זה! ניתן שיהיו שני אנשים זהים
+	// מה בקשר לשאר השאלה?
     if (isElementExists(list, element) == TRUE)
         return FAIL;
+	///////////////////////////////////////////////
 
     if (new_element != NULL)
         clone_flag = list->CloneElementFunc(new_element, element);
@@ -101,7 +105,8 @@ Result ListAdd(PList list, PElement element){
             list->first_list_element = new_element;
             list->last__list_element = new_element;
         } else {
-            list->last__list_element->Next_Element = new_list_element;
+            list->last__list_element->Next_Element = new_list_element; ////// אולי צריך להחליף בין האיבר האחרון לזה?
+			list->last__list_element = new_list_element; //// הוספתי את זה בשביל זה
         }
         return SUCCESS;
     }
@@ -144,7 +149,7 @@ Result ListRemove(PList list, PElement element){
     PList_Element prev_list_element = NULL; //an help pointer for the deleting action.
     PElement tmp_element = NULL;
 
-    while (tmp_list_element != NULL){ //goes throw all the nodes in the list.
+    while (tmp_list_element != NULL){ //goes through all the nodes in the list.
         tmp_element = tmp_list_element->Element;
         if (list->CompareElementFunc(tmp_element,element) == TRUE){ // if we found a matched element we need to delete its node and it from the list.
             if (tmp_list_element == list->first_list_element){ //handling the first node case.
@@ -251,10 +256,10 @@ void ListPrint(PList list){
         return;
 
     PElement element = ListGetFirst(list);
-    list->PrintElementFunc(element);
+    //list->PrintElementFunc(element);
     while (element != NULL){
-        list->PrintElementFunc(element);
+        list->PrintElementFunc(element); ///לא צריך להחליף ביניהם
         printf("\n");
-        element = ListGetNext(list);
+        element = ListGetNext(list); ///
     }
 }

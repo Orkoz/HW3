@@ -56,61 +56,61 @@ int main()
 	  destroyPerson(pPerson); //Since PersonList holds a copy
 	}
       
-      if ( 0 == strcmp(Command, "Start_Cluster") )
-	{
-	  char* Dim = strtok(NULL, delimiters);
-	  
-          if(!(pCluster=ClusterCreate(atoi(Dim))))
-	    {
-	      printf("Start_Cluster Failed. Exiting.\n");
-	      exit(-1);
-	    }
-	}
-      if ( 0 == strcmp(Command, "Clear_Cluster") )
-	{
-	  ClusterDestroy(pCluster);
-	  pCluster=NULL;
-	}
-      if ( 0 == strcmp(Command, "Add_Point") )
-	{
-	  char* Dim = strtok(NULL, delimiters);
-	  int n=atoi(Dim);
-	  PPoint pPoint = PointCreate(n);
-	  char* Coordinate = strtok(NULL, delimiters);
-	  while(Coordinate)
-	    {
-	      if(!PointAddCoordinate(pPoint, atoi(Coordinate)))
-		{
-		  printf("Add Coordinate Failed.\n");	
-		}
-	      Coordinate = strtok(NULL, delimiters);
-	    }	  
-	  if(!ClusterAddPoint(pCluster,pPoint))
-	    {
-	      printf("Add_Point Failed.\n");	
-	    }
-	  PointDestroy(pPoint);
-	}
+ //     if ( 0 == strcmp(Command, "Start_Cluster") )
+	//{
+	//  char* Dim = strtok(NULL, delimiters);
+	//  
+ //         if(!(pCluster=ClusterCreate(atoi(Dim))))
+	//    {
+	//      printf("Start_Cluster Failed. Exiting.\n");
+	//      exit(-1);
+	//    }
+	//}
+ //     if ( 0 == strcmp(Command, "Clear_Cluster") )
+	//{
+	//  ClusterDestroy(pCluster);
+	//  pCluster=NULL;
+	//}
+ //     if ( 0 == strcmp(Command, "Add_Point") )
+	//{
+	//  char* Dim = strtok(NULL, delimiters);
+	//  int n=atoi(Dim);
+	//  PPoint pPoint = PointCreate(n);
+	//  char* Coordinate = strtok(NULL, delimiters);
+	//  while(Coordinate)
+	//    {
+	//      if(!PointAddCoordinate(pPoint, atoi(Coordinate)))
+	//	{
+	//	  printf("Add Coordinate Failed.\n");	
+	//	}
+	//      Coordinate = strtok(NULL, delimiters);
+	//    }	  
+	//  if(!ClusterAddPoint(pCluster,pPoint))
+	//    {
+	//      printf("Add_Point Failed.\n");	
+	//    }
+	//  PointDestroy(pPoint);
+	//}
       if ( 0 == strcmp(Command, "Print") )
 	{
 	  if(pPersonList)
 	    {
 	      ListPrint(pPersonList);
 	    }
-	   if(pCluster)
-	     {
-	       ClusterPrint(pCluster);
-	     }
+	   //if(pCluster)
+	   //  {
+	   //    ClusterPrint(pCluster);
+	   //  }
 	}
     } // while(fgets(Line, MAX_LINE_SIZE, stdin))
   if(pPersonList)
     {
       ListDestroy(pPersonList);
     }
-  if(pCluster)
-    {
-      ClusterDestroy(pCluster);
-    }
+  //if(pCluster)
+  //  {
+  //    ClusterDestroy(pCluster);
+  //  }
   return 0;
 }
 
