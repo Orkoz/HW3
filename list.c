@@ -65,7 +65,7 @@ void ListDestroy(PList list){
     while (list_element != NULL){
         list->DeleteElementFunc(list_element ->Element);
         prev_list_element = list_element;
-        list_element->Next_Element;
+		list_element = list_element->Next_Element;
         free(prev_list_element);
     }
     free(list);
@@ -262,10 +262,12 @@ void ListPrint(PList list){
         return;
 
     PElement element = ListGetFirst(list);
-    list->PrintElementFunc(element);
+    //list->PrintElementFunc(element);
     while (element != NULL){
-		element = ListGetNext(list); ///
+		//
         list->PrintElementFunc(element); ///לא צריך להחליף ביניהם
-        printf("\n");
+        //printf("\n");
+		element = ListGetNext(list); //
     }
+	printf("\n");
 }

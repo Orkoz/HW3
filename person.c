@@ -129,6 +129,6 @@ void printPerson(PElement pElem){
 
     PPerson person = (PPerson)pElem;
 
-    printf("Name: %s, ID: %d, Age: %d",person->name,person->ID,person->age);
+    printf("Name: %s, ID: %d, Age: %d\n",person->name,person->ID,person->age);
 }
 
