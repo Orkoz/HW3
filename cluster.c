@@ -83,9 +83,10 @@ Result ClusterAddPoint(PCluster cluster, PElement element)
 	PPoint new_point = clonePoint(element);
 	if (new_point == NULL)
 		return FAIL;
-
+	
+	int distance;
 	if (cluster->point_count != 0)
-		int distance = ClusterGetMinDistance(cluster, new_point);
+		distance = ClusterGetMinDistance(cluster, new_point);
 
 	if (ListAdd(cluster->point_list, new_point) == FAIL)
 	{
@@ -131,7 +132,8 @@ int ClusterGetMinDistance(PCluster cluster, PElement element)
 	if (minDist == 1000)
 		return 1000;
 
-	for (int i = 1; i < cluster->point_count; i++)
+	int i = 1;
+	for (; i < cluster->point_count; i++)
 	{
 		curr_point = ListGetNext(cluster->point_list);
 		int currMin = getDistanceOfTwoPoints(curr_point, element);

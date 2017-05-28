@@ -78,7 +78,7 @@ Result PointAddCoordinate(PElement element, int x)
 	if (point == NULL)
 		return FAIL;
 	if (point->coord_count >= point->dim)
-		return FAIL; ///////// ìáãå÷ ùæä îä ùðãøù
+		return FAIL; ///////// ×œ×‘×“×•×§ ×©×–×” ×ž×” ×©× ×“×¨×©
 	PCoord new_coord = createCoord(x);
 	if (!ListAdd(point->coord_list, new_coord))
 	{
@@ -249,7 +249,8 @@ int getDistanceOfTwoPoints(PElement element1, PElement element2)
 	PCoord coord1 = (PCoord)(ListGetFirst(point1->coord_list));
 	PCoord coord2 = (PCoord)(ListGetFirst(point2->coord_list));
 	int sum = 0;
-	for (int i = 0; i < point1->dim; i++)
+	int i = 0;
+	for (; i < point1->dim; i++)
 	{
 		sum = sum + (coord1->x - coord2->x)*(coord1->x - coord2->x);
 		coord1 = (PCoord)(ListGetNext(point1->coord_list));
