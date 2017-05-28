@@ -1,0 +1,18 @@
+############################################################################################################
+# Script name: MakeMake
+# Description: makes a makefile for a program named PROG with all source files with extention EXT
+#              using compiler COMP
+# Parameters:
+#              - COMP - compiler name
+#              - PROG - program name
+#              - EXT - extention of source files to compile
+# Return value: none.
+############################################################################################################
+
+#! /bin/bash
+
+if [[ $# != 3 ]]; then
+	echo "Not enough parameters. usage: MakeMake <COMP> <PROG> <EXT>"
+	exit 1
+fi
+
