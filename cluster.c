@@ -71,8 +71,10 @@ Result ClusterAddPoint(PCluster cluster, PElement element)
 {
 	if (cluster == NULL || element == NULL)
 		return FAIL;
-	// checking if both in same dimention
+	// checking if both in same dimention and size
 	if (cluster->dim != getPointDim(element))
+		return FAIL;
+	if (cluster->dim != getPointSize(element))
 		return FAIL;
 	//checking if there is a point like this already
 	if (isElementExists(cluster->point_list, element) == TRUE)
@@ -91,8 +93,16 @@ Result ClusterAddPoint(PCluster cluster, PElement element)
 		return FAIL;
 	}
 
-	if (cluster->point_count != 0 && distance < cluster->MSD)
+	if (cluster->point_count == 1) 
+	{
+		// if this is the second point added, update MSD to eliminate first value of 1000
 		cluster->MSD = distance;
+	}
+	else if (cluster->point_count != 0 && distance < cluster->MSD) 
+	{
+		// if this is the 3rd point added (or more), chk distance and update if smaller than current MSD
+		cluster->MSD = distance;
+	}
 
 	cluster->point_count = cluster->point_count + 1;
 

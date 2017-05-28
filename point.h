@@ -16,6 +16,7 @@ void PointPrint(PElement);
 
 int getDistanceOfTwoPoints(PElement, PElement);
 int getPointDim(PElement);
+int getPointSize(PElement);
 
 PPoint clonePoint(PElement);
 BOOL comparePoint(PElement, PElement);

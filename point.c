@@ -169,6 +169,21 @@ int getPointDim(PElement element)
 }
 
 //*************************************************************************
+//* Function name: getPointSize
+//* Description: returns the size of the point
+//* Parameters:
+//*		-  PElement element - pointer to point
+//* Return Value: the size
+//*************************************************************************
+
+int getPointSize(PElement element)
+{
+	PPoint point = (PPoint)element;
+	if (point == NULL)
+		return 0;
+	return point->coord_count;
+}
+//*************************************************************************
 //* Function name: clonePoint
 //* Description: creating a new point the same as given.
 //* Parameters:
