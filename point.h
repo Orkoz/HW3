@@ -18,11 +18,11 @@ int getDistanceOfTwoPoints(PElement, PElement);
 int getPointDim(PElement);
 int getPointSize(PElement);
 
-PPoint clonePoint(PElement);
+PElement clonePoint(PElement);
 BOOL comparePoint(PElement, PElement);
 
 PCoord createCoord(int);
-PCoord cloneCoord(PElement);
+PElement cloneCoord(PElement);
 void destroyCoord(PElement);
 BOOL compareCoord(PElement, PElement);
 void printCoord(PElement);
