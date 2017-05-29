@@ -6,7 +6,7 @@
 typedef struct Person_ Person,*PPerson;
 
 PPerson PersonCreate(char*, int, int);
-PPerson clonePerson(PElement);
+PElement clonePerson(PElement);
 void destroyPerson(PElement);
 BOOL comparePersons(PElement, PElement);
 void printPerson(PElement);

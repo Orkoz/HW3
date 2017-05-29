@@ -49,14 +49,14 @@ PPerson PersonCreate(char *name, int age, int ID){
 //* Return Value: Pointer to cloned person adt.
 //*************************************************************************
 
-PPerson clonePerson(PElement pElem_two){
+PElement clonePerson(PElement pElem_two){
     //if (pElem_one == NULL || pElem_two == NULL)
     //    return FAIL;
 
     //PPerson target_person = (PPerson)pElem_one;
     PPerson source_person = (PPerson)pElem_two;
 	PPerson cloned_person = PersonCreate(source_person->name, source_person->age, source_person->ID);
-	return cloned_person;
+	return (PElement)cloned_person;
 
     //target_person->ID = source_person->ID;
     //target_person->age = source_person->age;

@@ -191,7 +191,7 @@ int getPointSize(PElement element)
 //* Return Value: a pointer to the cloned point
 //*************************************************************************
 
-PPoint clonePoint(PElement element)
+PElement clonePoint(PElement element)
 {
 	PPoint point = (PPoint)element;
 	if (point == NULL)
@@ -208,7 +208,7 @@ PPoint clonePoint(PElement element)
 		}
 		coord = ListGetNext(point->coord_list);
 	}
-	return cloned_p;
+	return (PElement)cloned_p;
 }
 
 //*************************************************************************
@@ -284,7 +284,7 @@ PCoord createCoord(int x)
 //* Return Value: a pointer to the new cloned coordinate
 //*************************************************************************
 
-PCoord cloneCoord(PElement coord)
+PElement cloneCoord(PElement coord)
 {
 	if (coord == NULL)
 		return NULL;
@@ -293,7 +293,7 @@ PCoord cloneCoord(PElement coord)
 	if (!cloned_coord)
 		return NULL;
 	cloned_coord->x = old_coord->x;
-	return cloned_coord;
+	return (PElement)cloned_coord;
 }
 
 //*************************************************************************
