@@ -1,0 +1,56 @@
+############################################################################################################
+# Script name: MakeMake
+# Description: makes a makefile for a program named PROG with all source files with extention EXT
+#              using compiler COMP
+# Parameters:
+#              - COMP - compiler name
+#              - PROG - program name
+#              - EXT - extention of source files to compile
+# Return value: none.
+############################################################################################################
+
+#! /bin/bash
+
+if [[ $# != 3 ]]; then
+	echo "Not enough parameters. usage: MakeMake <COMP> <PROG> <EXT>"
+	exit 1
+fi
+
+{
+	echo "# This is a makefile for the $2 project";
+	if [[ "gcc" == $1 ]]; then
+	
+		echo "CC = gcc";	
+		echo "CFLAGS = -g -Wall";	
+		echo "CCLINK = "'$'"(CC)";	
+		echo "LIBS = ";	
+	fi	
+	if [[ "g++" == $1 ]]; then	
+		
+		echo "CCC = g++";	
+		echo "CXXFLAGS = -Wall -g";	
+		echo "CCXXLINK = "'$'"(CCC)";	
+	fi	
+		
+	echo "RM = rm -f";	
+	echo -n "OBJS= ";	
+	if [[ "gcc" == $1 ]]; then	
+		for i in *"$3"; do echo -n "${i%$3}.o "; done; echo "";	
+	fi	
+	if [[ "g++" == $1 ]]; then	
+		for i in *"$3"; do echo -n "${i%$3}.o "; done; echo "";	
+	fi	
+		
+	echo $2": "'$'"(OBJS)";	
+	if [[ "gcc" == $1 ]]; then	
+		echo "	"'$'"(CCLINK) -o "$2" "'$'"(OBJS) "'$'"(LIBS)";	
+		gcc -MM *"$3";	
+	fi	
+	if [[ "g++" == $1 ]]; then	
+		echo "	"'$'"(CXXLINK) -o "$2" "'$'"(OBJS) "'$'"(LIBS)";	
+		g++ -MM *"$3";	
+	fi	
+		
+	echo "clean:"	
+	echo "	"'$'"(RM) "$2" "'*.o';		
+} > makefile
